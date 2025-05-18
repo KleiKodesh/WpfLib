@@ -21,6 +21,7 @@ namespace WpfLib.Helpers
 
         static Dictionary<string, string> _translations;
         static string _locale;
+        static string _localDirectory;
 
         public static string Locale
         {
@@ -53,19 +54,20 @@ namespace WpfLib.Helpers
         public static Dictionary<string, Binding> Bindings { get; private set; } = new Dictionary<string, Binding>();
 
         public static string LocaleDirectory =>
-            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Locale");
+            _localDirectory ?? Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Locale");
 
         public static List<string> LocaleList => (Directory.Exists(LocaleDirectory)) ?
            Directory.GetFiles(LocaleDirectory, "*.json").Select(Path.GetFileNameWithoutExtension).ToList() : new List<string>();
 
         public static bool? IsRtl => Locale?.StartsWith("he");
 
-        public static void UseOfficeLocale(Microsoft.Office.Interop.Word.Application application)
+        public static void UseOfficeLocale(Microsoft.Office.Interop.Word.Application application, string basDirectory)
         {
             try
             {
+                _localDirectory = Path.Combine(Path.GetDirectoryName(basDirectory), "Locale");
                 int lcid = application.LanguageSettings.get_LanguageID(Office.MsoAppLanguageID.msoLanguageIDUI);
-                Locale = new CultureInfo(lcid).TwoLetterISOLanguageName;
+                Locale = (new CultureInfo(lcid).TwoLetterISOLanguageName);
             }
             catch { }
         }
