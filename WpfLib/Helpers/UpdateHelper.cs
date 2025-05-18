@@ -50,7 +50,7 @@ namespace WpfLib.Helpers
             }
         }
 
-        public static async void UpdateAsync(string repoOwner, string repoName, string currentVersion)
+        public static async void Update(string repoOwner, string repoName, string currentVersion)
         {
             CurrentVersion = currentVersion;
 
