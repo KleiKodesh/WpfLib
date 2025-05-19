@@ -83,19 +83,37 @@ namespace WpfLib.Helpers
             OnStaticPropertyChanged(nameof(IsRtl));
         }
 
-        static void LoadDictionary(string locale)
+        static void LoadDictionary(string localePrefix)
         {
+            Translations = new Dictionary<string, string>();
+
             try
             {
-                string filePath = Path.Combine(LocaleDirectory, locale + ".json");
-                if (File.Exists(filePath))
+                var files = Directory.GetFiles(LocaleDirectory, localePrefix + "*.json");
+
+                foreach (var filePath in files)
                 {
-                    string json = File.ReadAllText(filePath);
-                    Translations = JsonSerializer.Deserialize<Dictionary<string, string>>(json) ?? new Dictionary<string, string>();
+                    if (File.Exists(filePath))
+                    {
+                        string json = File.ReadAllText(filePath);
+                        var partialTranslations = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
+                        if (partialTranslations != null)
+                        {
+                            foreach (var kvp in partialTranslations)
+                            {
+                                // Add or overwrite existing keys
+                                Translations[kvp.Key] = kvp.Value;
+                            }
+                        }
+                    }
                 }
             }
-            catch { }
+            catch
+            {
+                // Optionally log or handle errors
+            }
         }
+
 
         public static void UpdateLocalization()
         {
