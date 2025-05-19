@@ -20,7 +20,7 @@ namespace WpfLib.Helpers
         }
 
         static Dictionary<string, string> _translations;
-        static string _locale;
+        static string _locale = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
         static string _localDirectory;
 
         public static string Locale
@@ -35,12 +35,13 @@ namespace WpfLib.Helpers
                 }    
             }
         }
+
         public static Dictionary<string , string> Translations 
         {
             get
             {
                 if (_translations == null)
-                    _translations = new Dictionary<string , string>();
+                    LoadDictionary(Locale);
                 return _translations;
             }
             set
