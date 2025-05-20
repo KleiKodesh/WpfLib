@@ -94,19 +94,11 @@ namespace WpfLib.Helpers
 
                 foreach (var filePath in files)
                 {
-                    if (File.Exists(filePath))
-                    {
-                        string json = File.ReadAllText(filePath);
-                        var partialTranslations = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
-                        if (partialTranslations != null)
-                        {
-                            foreach (var kvp in partialTranslations)
-                            {
-                                // Add or overwrite existing keys
-                                Translations[kvp.Key] = kvp.Value;
-                            }
-                        }
-                    }
+                    string json = File.ReadAllText(filePath);
+                    var partialTranslations = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
+                    if (partialTranslations != null)
+                        foreach (var kvp in partialTranslations)
+                            Translations[kvp.Key] = kvp.Value;
                 }
             }
             catch

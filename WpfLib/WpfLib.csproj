@@ -109,7 +109,9 @@
     <Compile Include="Helpers\ThemeHelper.cs" />
     <Compile Include="Helpers\UpdateHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\CheckedTreeItemBase.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
+    <Compile Include="ViewModels\TreeItemBase.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
   </ItemGroup>
   <ItemGroup>
