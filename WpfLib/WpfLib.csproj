@@ -96,9 +96,11 @@
     <Compile Include="AttachedProperties\GridSetup.cs" />
     <Compile Include="AttachedProperties\TextBoxBehaviours.cs" />
     <Compile Include="Controls\TabItem_X_Button.cs" />
+    <Compile Include="Converters\BoolToFlowDirectionConverter.cs" />
     <Compile Include="Converters\FlowDirectionConverter.cs" />
-    <Compile Include="Converters\StringArrayConverter.cs" />
-    <Compile Include="Converters\StringToListConverter.cs" />
+    <Compile Include="Converters\ArrayToStringConverter.cs" />
+    <Compile Include="Converters\StringToBoolConverter.cs" />
+    <Compile Include="Converters\ListToStringConverter.cs" />
     <Compile Include="Extensions\LocaleExtension.cs" />
     <Compile Include="Extensions\ResourceExtension.cs" />
     <Compile Include="Helpers\DependencyHelper.cs" />

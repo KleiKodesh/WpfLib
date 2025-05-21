@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using System.Threading;
 
 namespace WpfLib.ViewModels
 {
     public class TreeItemBase<T> : ViewModelBase where T : TreeItemBase<T>
     {
         string _name;
-        ObservableCollection<T> _items = new ObservableCollection<T>();
+        ObservableCollection<T> _items;
 
         [JsonIgnore] public T Parent { get; set; }
         public virtual string Name { get => _name; set => SetProperty(ref _name, value); }
