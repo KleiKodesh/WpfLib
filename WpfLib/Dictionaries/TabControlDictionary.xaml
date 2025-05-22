@@ -4,13 +4,43 @@
                     xmlns:controls="clr-namespace:WpfLib.Controls">
 
     <Style TargetType="TabItem" x:Key="X_ButtonTabStyle">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabItem">
+                    <Border x:Name="border"
+                            BorderThickness="0,0,0,1.5"
+                            Background="Transparent" BorderBrush="Transparent"
+                            Margin="0">
+                        <ContentPresenter
+                            ContentSource="Header"
+                            RecognizesAccessKey="True"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Margin="4" />
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter TargetName="border" Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="#FF1E66ED"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Opacity" Value="0.9"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+
+            </Setter.Value>
+        </Setter>
         <Setter Property="HeaderTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal" ToolTip="{Binding}">
-                        <TextBlock Text="{Binding}" 
+                    <StackPanel Orientation="Horizontal" ToolTip="{Binding}" Background="Transparent">
+                        <TextBlock Text="{Binding}" MaxWidth="80"
                              VerticalAlignment="Center"
-                                   Padding="3"/>
+                             Padding="2,1,2,1" Background="Transparent"/>
                         <controls:TabItem_X_Button Background="Transparent" BorderThickness="0" 
                                 Margin="5,0,0,0" Padding="5,3,5,3"  VerticalAlignment="Center">
                             <controls:TabItem_X_Button.Resources>
@@ -18,7 +48,7 @@
                                     <Setter Property="CornerRadius" Value="3"/>
                                 </Style>
                             </controls:TabItem_X_Button.Resources>
-                            <TextBlock Text="x" FontFamily="Segoe UI"
+                            <TextBlock Text="x" FontFamily="Segoe UI" Background="Transparent"
                                        VerticalAlignment="Center" 
                                        LineStackingStrategy="BlockLineHeight"
                                        LineHeight="{Binding FontSize, RelativeSource={RelativeSource Mode=Self}}"/>

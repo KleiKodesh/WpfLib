@@ -105,6 +105,7 @@
     <Compile Include="Extensions\ResourceExtension.cs" />
     <Compile Include="Helpers\DependencyHelper.cs" />
     <Compile Include="Helpers\EventArgs.cs" />
+    <Compile Include="Helpers\FontsHelper.cs" />
     <Compile Include="Helpers\LocaleDictionary.cs" />
     <Compile Include="Helpers\MsgBox.cs" />
     <Compile Include="Helpers\ResourcesHelper.cs" />
