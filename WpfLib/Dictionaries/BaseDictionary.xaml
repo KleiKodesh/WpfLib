@@ -47,6 +47,11 @@
         <Setter Property="BorderThickness" Value="0"/>
     </Style>
 
+    <Style TargetType="RepeatButton" x:Key="FlatRepeatButton">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+
     <ControlTemplate x:Key="ToggleRadioButton" TargetType="RadioButton">
         <ToggleButton Content="{TemplateBinding Content}"
                   IsChecked="{TemplateBinding IsChecked}"
