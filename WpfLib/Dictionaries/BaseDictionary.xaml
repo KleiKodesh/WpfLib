@@ -8,6 +8,7 @@
         <ResourceDictionary Source="/WpfLib;component/Dictionaries/ComboBoxDictionary.xaml"/>
         <ResourceDictionary Source="/WpfLib;component/Dictionaries/WaterMarkDictionary.xaml"/>
         <ResourceDictionary Source="/WpfLib;component/Dictionaries/TabControlDictionary.xaml"/>
+        <ResourceDictionary Source="/WpfLib;component/Dictionaries/ItemsControlDictionary.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     
     <local:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
@@ -22,7 +23,7 @@
     
     <Style TargetType="Path">
         <Setter Property="Fill" Value="{Binding Path=(helpers:ThemeHelper.ForeGround)}"/>
-        <Setter Property="Stretch" Value="Fill"/>
+        <Setter Property="Stretch" Value="Uniform"/>
         <Setter Property="Margin" Value="5"/>
         <Setter Property="FlowDirection" Value="LeftToRight"/>
         <Setter Property="MinWidth" Value="{Binding ActualHeight, RelativeSource={RelativeSource Mode=Self}}"/>

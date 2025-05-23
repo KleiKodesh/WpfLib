@@ -3,6 +3,70 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controls="clr-namespace:WpfLib.Controls">
 
+    <Style TargetType="ToggleButton" x:Key="FlatTabStyle">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Border x:Name="border"
+                     BorderThickness="0,0,0,1.5"
+                     Background="Transparent" BorderBrush="Transparent"
+                     Margin="0">
+                        <ContentPresenter
+                     Content="{TemplateBinding Content}"
+                     RecognizesAccessKey="True"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"
+                     Margin="4" />
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter TargetName="border" Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="#FF1E66ED"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Opacity" Value="0.9"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="TabItem" x:Key="FlatTabItemStyle">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabItem">
+                    <Border x:Name="border"
+                        BorderThickness="0,0,0,1.5"
+                        Background="Transparent" BorderBrush="Transparent"
+                        Margin="0">
+                        <ContentPresenter
+                        ContentSource="Header"
+                        RecognizesAccessKey="True"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Margin="4" />
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter TargetName="border" Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="#FF1E66ED"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Opacity" Value="0.9"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
     <Style TargetType="TabItem" x:Key="X_ButtonTabStyle">
         <Setter Property="Template">
             <Setter.Value>
