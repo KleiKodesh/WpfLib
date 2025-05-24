@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace WpfLib.Controls
 {
@@ -41,6 +31,23 @@ namespace WpfLib.Controls
         public string Answer
         {
             get { return txtAnswer.Text; }
+        }
+
+        private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.Key) 
+            {
+                case Key.Enter:
+                    this.DialogResult = true;
+                    Close();
+                    e.Handled = true;
+                    break;
+                case Key.Escape:
+                    Close();
+                    e.Handled= true;
+                    break;
+            } 
+                
         }
     }
 }
