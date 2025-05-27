@@ -50,21 +50,25 @@ namespace WpfLib.Helpers
             }
         }
 
-        public static async void Update(string repoOwner, string repoName, string currentVersion)
+        public static async void Update(string repoOwner, string repoName, string currentVersion, string updateMessage = "")
         {
+            if (!string.IsNullOrEmpty(updateMessage))
+                updateQuestion = updateMessage;
+
             CurrentVersion = currentVersion;
 
             try
             {
                 await Task.Run( async () =>
                 {
+                    await Task.Delay(5000);
                     if (IsUpdateTime())
                     {
                         var result = await CheckForUpdates(repoOwner, repoName, currentVersion);
 
                         if (result.IsUpdateAvailable)
                         {
-                            var dialogResult = MsgBox.Question(LocaleDictionary.Translate(updateQuestion));
+                            var dialogResult = MsgBox.Question(LocaleDictionary.Translate(updateQuestion), repoName);
 
                             if (dialogResult == MessageBoxResult.Yes)
                                 Process.Start(result.UpdateUrl);

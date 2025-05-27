@@ -100,6 +100,7 @@
     </Compile>
     <Compile Include="Controls\TabItem_X_Button.cs" />
     <Compile Include="Converters\BoolToFlowDirectionConverter.cs" />
+    <Compile Include="Converters\ToggleCheckBoxConverters.cs" />
     <Compile Include="Converters\FlowDirectionConverter.cs" />
     <Compile Include="Converters\ArrayToStringConverter.cs" />
     <Compile Include="Converters\StringToBoolConverter.cs" />
@@ -129,6 +130,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Controls\HebrewInputBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dictionaries\ToggleSwitchDictionary.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

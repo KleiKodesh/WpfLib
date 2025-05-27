@@ -5,7 +5,7 @@ namespace WpfLib.Helpers
 {
     public static class MsgBox
     {
-        public static void InforMation(string message, string title = "", MessageBoxImage image = MessageBoxImage.Information)
+        public static void Information(string message, string title = "", MessageBoxImage image = MessageBoxImage.Information)
         {
             if (LocaleDictionary.IsRtl == true)
                  MessageBox.Show(

@@ -9,24 +9,27 @@
         <ResourceDictionary Source="/WpfLib;component/Dictionaries/WaterMarkDictionary.xaml"/>
         <ResourceDictionary Source="/WpfLib;component/Dictionaries/TabControlDictionary.xaml"/>
         <ResourceDictionary Source="/WpfLib;component/Dictionaries/ItemsControlDictionary.xaml"/>
+        <ResourceDictionary Source="/WpfLib;component/Dictionaries/ToggleSwitchDictionary.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     
     <local:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
     <converters:FlowDirectionConverter x:Key="FlowDirectionConverter"/>
 
-    <SolidColorBrush x:Key="Generic.BorderBrush"  Color="#FFABADB3" Opacity="0.7"/>
-    <SolidColorBrush x:Key="Generic.LightBackGround" Opacity="0.3" Color="#FFABADB3"/>
-    <SolidColorBrush x:Key="Generic.Light.LightBackGround" Opacity="0.1" Color="#FFF5F5F5"/>
-    <SolidColorBrush x:Key="Generic.MouseOver.Background" Color="#FFC4E5F6" Opacity="0.8"/>
-    <SolidColorBrush x:Key="Generic.BorderBrush.Blue" Color="Blue"/>
-    <SolidColorBrush x:Key="ComboBox.Static.Border" Color="#FFACACAC"/>
-    
+    <SolidColorBrush x:Key="Generic.Clicked" Color="LightGray" Opacity="0.5"/>
+    <SolidColorBrush x:Key="Generic.MouseOver" Color="BlueViolet" Opacity="0.1"/>
+
     <Style TargetType="Path">
         <Setter Property="Fill" Value="{Binding Path=(helpers:ThemeHelper.ForeGround)}"/>
         <Setter Property="Stretch" Value="Uniform"/>
         <Setter Property="Margin" Value="5"/>
         <Setter Property="FlowDirection" Value="LeftToRight"/>
         <Setter Property="MinWidth" Value="{Binding ActualHeight, RelativeSource={RelativeSource Mode=Self}}"/>
+    </Style>
+
+    <Style TargetType="ToolTip">
+        <Style.Resources>
+            <Style TargetType="TextBlock"/>
+        </Style.Resources>
     </Style>
 
     <!--<Style TargetType="TextBlock">
@@ -36,45 +39,210 @@
     
     <Style TargetType="UserControl">
         <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Background" Value="{Binding Path=(helpers:ThemeHelper.BackGround)}"/>
+    </Style>
+
+    <Style TargetType="ScrollBar">
+        <Setter Property="Background" Value="Transparent"/>
     </Style>
 
     <Style TargetType="Button" x:Key="FlatButton">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.ForeGround)}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                      RecognizesAccessKey="True"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" Value="0.6"/>
+                            <Setter Property="Background" Value="{StaticResource Generic.MouseOver}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="{StaticResource Generic.Clicked}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style TargetType="Button" x:Key="FlatRoundedButton">
-        <Style.Resources>
-            <Style TargetType="Border">
-                <Setter Property="CornerRadius" Value="5"/>
-            </Style>
-        </Style.Resources>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.ForeGround)}"/>
+        <Setter Property="Padding" Value="3"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Padding="{TemplateBinding Padding}"
+                        CornerRadius="10">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                          RecognizesAccessKey="True"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter  Property="Opacity" Value="0.6"/>
+                            <Setter Property="Background" Value="{StaticResource Generic.MouseOver}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="{StaticResource Generic.Clicked}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style TargetType="Button" x:Key="LightButton">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="LightGray"/>
-        <Setter Property="Padding" Value="3"/>
         <Setter Property="BorderThickness" Value="0.5"/>
+        <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.ForeGround)}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                              RecognizesAccessKey="True"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter  Property="Opacity" Value="0.6"/>
+                            <Setter Property="Background" Value="{StaticResource Generic.MouseOver}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="{StaticResource Generic.Clicked}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Button" x:Key="FlatLightRoundedButton">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.ForeGround)}"/>
+            <Setter Property="BorderThickness" Value="0.5"/>
+            <Setter Property="Padding" Value="3"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                             BorderBrush="{TemplateBinding BorderBrush}"
+                             BorderThickness="{TemplateBinding BorderThickness}"
+                             Padding="{TemplateBinding Padding}"
+                             CornerRadius="10">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                   RecognizesAccessKey="True"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter  Property="Opacity" Value="0.6"/>
+                            <Setter Property="Background" Value="{StaticResource Generic.MouseOver}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="{StaticResource Generic.Clicked}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style TargetType="ToggleButton" x:Key="FlatToggleButton">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.ForeGround)}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      RecognizesAccessKey="True"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter  Property="Opacity" Value="0.6"/>
+                            <Setter Property="Background" Value="{StaticResource Generic.MouseOver}"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Background" Value="{StaticResource Generic.Clicked}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style TargetType="RepeatButton" x:Key="FlatRepeatButton">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.ForeGround)}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RepeatButton">
+                    <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      RecognizesAccessKey="True"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter  Property="Opacity" Value="0.6"/>
+                            <Setter Property="Background" Value="{StaticResource Generic.MouseOver}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="{StaticResource Generic.Clicked}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <ControlTemplate x:Key="ToggleRadioButton" TargetType="RadioButton">
         <ToggleButton Content="{TemplateBinding Content}"
                   IsChecked="{TemplateBinding IsChecked}"
                   Background="Transparent"
-                  BorderThickness="0"/>
+                  BorderThickness="0"
+                  Foreground="{Binding Path=(helpers:ThemeHelper.ForeGround)}"/>
     </ControlTemplate>
+
+    <Style TargetType="TextBlock">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="LineStackingStrategy" Value="BlockLineHeight"/>
+        <Setter Property="LineHeight" Value="{Binding FontSize, RelativeSource={RelativeSource Mode=Self}}"/>
+        <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.ForeGround)}"/>
+    </Style>
+
+    <Style TargetType="TabControl">
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
 
 </ResourceDictionary>
