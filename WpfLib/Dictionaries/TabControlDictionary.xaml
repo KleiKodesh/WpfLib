@@ -105,12 +105,14 @@
         <Setter Property="HeaderTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal" ToolTip="{Binding}" Background="Transparent">
+                    <StackPanel x:Name="panel" Orientation="Horizontal" ToolTip="{Binding}" Background="Transparent">
+                        
                         <TextBlock Text="{Binding}" MaxWidth="80"
                              VerticalAlignment="Center"
                              Padding="2,1,2,1" 
                              Background="Transparent"
                              Foreground="{Binding Path=(helpers:ThemeHelper.ForeGround)}"/>
+                        
                         <controls:TabItem_X_Button Background="Transparent" BorderThickness="0" 
                                 Margin="5,0,0,0" Padding="5,3,5,3"  VerticalAlignment="Center">
                             <controls:TabItem_X_Button.Resources>
@@ -124,7 +126,11 @@
                                        LineHeight="{Binding FontSize, RelativeSource={RelativeSource Mode=Self}}"
                                        Foreground="{Binding Path=(helpers:ThemeHelper.ForeGround)}"/>
                         </controls:TabItem_X_Button>
+                        
                     </StackPanel>
+                    <!--<DataTemplate.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=panel, Path=IsMouseOver}"
+                    </DataTemplate.Triggers>-->
                 </DataTemplate>
             </Setter.Value>
         </Setter>
