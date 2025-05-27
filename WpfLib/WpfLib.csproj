@@ -92,6 +92,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AttachedProperties\PopupListBoxBehaviour.cs" />
     <Compile Include="AttachedProperties\ButtonStripBehavior.cs" />
     <Compile Include="AttachedProperties\GridSetup.cs" />
     <Compile Include="AttachedProperties\TextBoxBehaviours.cs" />
@@ -100,6 +101,7 @@
     </Compile>
     <Compile Include="Controls\TabItem_X_Button.cs" />
     <Compile Include="Converters\BoolToFlowDirectionConverter.cs" />
+    <Compile Include="Converters\ReverseBoolConverter.cs" />
     <Compile Include="Converters\ToggleCheckBoxConverters.cs" />
     <Compile Include="Converters\FlowDirectionConverter.cs" />
     <Compile Include="Converters\ArrayToStringConverter.cs" />
