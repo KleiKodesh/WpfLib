@@ -16,7 +16,7 @@
     <converters:FlowDirectionConverter x:Key="FlowDirectionConverter"/>
 
     <SolidColorBrush x:Key="Generic.Clicked" Color="LightGray" Opacity="0.5"/>
-    <SolidColorBrush x:Key="Generic.MouseOver" Color="BlueViolet" Opacity="0.1"/>
+    <SolidColorBrush x:Key="Generic.MouseOver" Color="LightGray" Opacity="0.2"/>
 
     <Style TargetType="Path">
         <Setter Property="Fill" Value="{Binding Path=(helpers:ThemeHelper.ForeGround)}"/>

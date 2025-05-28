@@ -101,6 +101,7 @@
       <DependentUpon>HebrewInputBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\TabItem_X_Button.cs" />
+    <Compile Include="Controls\WindowButtons.cs" />
     <Compile Include="Converters\BoolToFlowDirectionConverter.cs" />
     <Compile Include="Converters\ReverseBoolConverter.cs" />
     <Compile Include="Converters\ToggleCheckBoxConverters.cs" />
@@ -110,7 +111,7 @@
     <Compile Include="Converters\ListToStringConverter.cs" />
     <Compile Include="Extensions\LocaleExtension.cs" />
     <Compile Include="Extensions\ResourceExtension.cs" />
-    <Compile Include="Helpers\Class1.cs" />
+    <Compile Include="Helpers\ConfigurationManagerWrapper.cs" />
     <Compile Include="Helpers\ObservableCollectionExtensions.cs" />
     <Compile Include="Helpers\HebrewDateHelper.cs" />
     <Compile Include="Helpers\DependencyHelper.cs" />
@@ -134,6 +135,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Controls\HebrewInputBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dictionaries\ThemedWindowDictionary.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
