@@ -8,6 +8,7 @@ using System.Windows.Data;
 using Office = Microsoft.Office.Core;
 using System.Globalization;
 using WpfLib.Extensions;
+using System.Windows;
 
 namespace WpfLib.Helpers
 {
@@ -62,6 +63,9 @@ namespace WpfLib.Helpers
 
         public static bool? IsRtl => Locale?.StartsWith("he");
 
+        public static FlowDirection FlowDirection => Locale != null && Locale.StartsWith("he") ?
+            FlowDirection.RightToLeft : FlowDirection.LeftToRight;
+
         public static void UseOfficeLocale(Microsoft.Office.Interop.Word.Application application, string basDirectory)
         {
             try
@@ -82,6 +86,7 @@ namespace WpfLib.Helpers
             UpdateLocalization();
             OnStaticPropertyChanged(nameof(Locale));
             OnStaticPropertyChanged(nameof(IsRtl));
+            OnStaticPropertyChanged(nameof(FlowDirection));
         }
 
         static void LoadDictionary(string localePrefix)
