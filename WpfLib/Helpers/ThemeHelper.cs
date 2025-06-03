@@ -14,41 +14,41 @@ namespace WpfLib.Helpers
         }
 
         private static bool _doNotChangeDocumentColors;
-        private static SolidColorBrush _backGround;
-        private static SolidColorBrush _foreGround;
+        private static SolidColorBrush _Background;
+        private static SolidColorBrush _Foreground;
 
         public static string LightForegroundColorString => "#000000";
         public static string LightBackgroundColorString => "#FFFFFF";
         public static string DarkForegroundColorString => "#FFFFFF";
         public static string DarkBackgroundColorString => "#1E1E1E";
 
-        public static SolidColorBrush BackGround
+        public static SolidColorBrush Background
         {
             get
             {
-                if (_backGround == null)
+                if (_Background == null)
                     DetectSystemTheme();
-                return _backGround;
+                return _Background;
             }
             set
             {
-                _backGround = value;
-                OnStaticPropertyChanged(nameof(BackGround));
+                _Background = value;
+                OnStaticPropertyChanged(nameof(Background));
             }
         }
 
-        public static SolidColorBrush ForeGround
+        public static SolidColorBrush Foreground
         {
             get
             {
-                if (_foreGround == null)
+                if (_Foreground == null)
                     DetectSystemTheme();
-                return _foreGround;
+                return _Foreground;
             }
             set
             {
-                _foreGround = value;
-                OnStaticPropertyChanged(nameof(ForeGround));
+                _Foreground = value;
+                OnStaticPropertyChanged(nameof(Foreground));
             }
         }
 
@@ -66,13 +66,13 @@ namespace WpfLib.Helpers
         {
             if (isDarkMode)
             {
-                BackGround = new SolidColorBrush((Color)ColorConverter.ConvertFromString(DarkBackgroundColorString));
-                ForeGround = new SolidColorBrush((Color)ColorConverter.ConvertFromString(DarkForegroundColorString));
+                Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(DarkBackgroundColorString));
+                Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(DarkForegroundColorString));
             }
             else
             {
-                BackGround = new SolidColorBrush((Color)ColorConverter.ConvertFromString(LightBackgroundColorString));
-                ForeGround = new SolidColorBrush((Color)ColorConverter.ConvertFromString(LightForegroundColorString));
+                Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(LightBackgroundColorString));
+                Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(LightForegroundColorString));
             }
         }
 
@@ -88,16 +88,16 @@ namespace WpfLib.Helpers
                         if (value is int reg)
                         {
                             bool isLight = reg != 0;
-                            BackGround = new SolidColorBrush((Color)ColorConverter.ConvertFromString(isLight ? LightBackgroundColorString : DarkBackgroundColorString));
-                            ForeGround = new SolidColorBrush((Color)ColorConverter.ConvertFromString(isLight ? LightForegroundColorString : DarkForegroundColorString));
+                            Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(isLight ? LightBackgroundColorString : DarkBackgroundColorString));
+                            Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(isLight ? LightForegroundColorString : DarkForegroundColorString));
                         }
                     }
                 }
             }
             catch
             {
-                BackGround = new SolidColorBrush((Color)ColorConverter.ConvertFromString(LightBackgroundColorString));
-                ForeGround = new SolidColorBrush((Color)ColorConverter.ConvertFromString(LightForegroundColorString));
+                Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(LightBackgroundColorString));
+                Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(LightForegroundColorString));
             }
         }
 

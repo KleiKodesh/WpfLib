@@ -19,7 +19,7 @@
     <SolidColorBrush x:Key="Generic.MouseOver" Color="LightGray" Opacity="0.2"/>
 
     <Style TargetType="Path">
-        <Setter Property="Fill" Value="{Binding Path=(helpers:ThemeHelper.ForeGround)}"/>
+        <Setter Property="Fill" Value="{Binding Path=(helpers:ThemeHelper.Foreground)}"/>
         <Setter Property="Stretch" Value="Uniform"/>
         <Setter Property="Margin" Value="5"/>
         <Setter Property="FlowDirection" Value="LeftToRight"/>
@@ -36,11 +36,11 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="LineStackingStrategy" Value="BlockLineHeight"/>
         <Setter Property="LineHeight" Value="{Binding FontSize, RelativeSource={RelativeSource Mode=Self}}"/>
-        <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.ForeGround)}"/>
+        <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.Foreground)}"/>
     </Style>
 
     <Style TargetType="CheckBox">
-        <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.ForeGround)}"/>
+        <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.Foreground)}"/>
     </Style>
 
     <Style TargetType="TextBox">
@@ -49,7 +49,7 @@
     
     <Style TargetType="UserControl">
         <Setter Property="FontSize" Value="14"/>
-        <Setter Property="Background" Value="{Binding Path=(helpers:ThemeHelper.BackGround)}"/>
+        <Setter Property="Background" Value="{Binding Path=(helpers:ThemeHelper.Background)}"/>
     </Style>
 
     <Style TargetType="ScrollBar">
@@ -59,7 +59,7 @@
     <Style TargetType="Button" x:Key="FlatButton">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.ForeGround)}"/>
+        <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.Foreground)}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -88,7 +88,7 @@
     <Style TargetType="Button" x:Key="FlatRoundedButton">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.ForeGround)}"/>
+        <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.Foreground)}"/>
         <Setter Property="Padding" Value="3"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -120,7 +120,7 @@
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="LightGray"/>
         <Setter Property="BorderThickness" Value="0.5"/>
-        <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.ForeGround)}"/>
+        <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.Foreground)}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -149,7 +149,7 @@
     <Style TargetType="Button" x:Key="FlatLightRoundedButton">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.ForeGround)}"/>
+            <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.Foreground)}"/>
             <Setter Property="BorderThickness" Value="0.5"/>
             <Setter Property="Padding" Value="3"/>
         <Setter Property="Template">
@@ -181,7 +181,7 @@
     <Style TargetType="ToggleButton" x:Key="FlatToggleButton">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.ForeGround)}"/>
+        <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.Foreground)}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
@@ -210,7 +210,7 @@
     <Style TargetType="RepeatButton" x:Key="FlatRepeatButton">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.ForeGround)}"/>
+        <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.Foreground)}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="RepeatButton">
@@ -241,11 +241,16 @@
                   IsChecked="{TemplateBinding IsChecked}"
                   Background="Transparent"
                   BorderThickness="0"
-                  Foreground="{Binding Path=(helpers:ThemeHelper.ForeGround)}"/>
+                  Foreground="{Binding Path=(helpers:ThemeHelper.Foreground)}"/>
     </ControlTemplate>
 
     <Style TargetType="TabControl">
         <Setter Property="Background" Value="Transparent"/>
+    </Style>
+
+    <Style TargetType="ListView">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.Foreground)}"/>
     </Style>
 
 </ResourceDictionary>

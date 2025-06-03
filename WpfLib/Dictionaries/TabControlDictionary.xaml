@@ -7,6 +7,7 @@
                     xmlns:ap="clr-namespace:WpfLib.AttachedProperties">
 
     <Style TargetType="ToggleButton" x:Key="FlatTabStyle">
+        <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.Foreground)}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
@@ -39,6 +40,7 @@
     </Style>
     
     <Style TargetType="TabItem" x:Key="FlatTabItemStyle">
+        <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.Foreground)}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TabItem">
@@ -71,6 +73,7 @@
     </Style>
     
     <Style TargetType="TabItem" x:Key="X_ButtonTabStyle">
+        <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.Foreground)}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TabItem">
@@ -111,7 +114,7 @@
                              VerticalAlignment="Center"
                              Padding="2,1,2,1" 
                              Background="Transparent"
-                             Foreground="{Binding Path=(helpers:ThemeHelper.ForeGround)}"/>
+                             Foreground="{Binding Path=(helpers:ThemeHelper.Foreground)}"/>
                         
                         <controls:TabItem_X_Button Background="Transparent" BorderThickness="0" 
                                 Margin="5,0,0,0" Padding="5,3,5,3"  VerticalAlignment="Center">
@@ -124,7 +127,7 @@
                                        VerticalAlignment="Center" 
                                        LineStackingStrategy="BlockLineHeight"
                                        LineHeight="{Binding FontSize, RelativeSource={RelativeSource Mode=Self}}"
-                                       Foreground="{Binding Path=(helpers:ThemeHelper.ForeGround)}"/>
+                                       Foreground="{Binding Path=(helpers:ThemeHelper.Foreground)}"/>
                         </controls:TabItem_X_Button>
                         
                     </StackPanel>
@@ -163,7 +166,7 @@
                                           HorizontalContentAlignment="Center">
                                 <ToggleButton.Resources>
                                 </ToggleButton.Resources>
-                                <Path Fill="{Binding Path=(helpers:ThemeHelper.ForeGround)}"
+                                <Path Fill="{Binding Path=(helpers:ThemeHelper.Foreground)}"
                                       VerticalAlignment="Center"
                                       HorizontalAlignment="Center"
                                       Stretch="Uniform"
@@ -184,8 +187,8 @@
                                Placement="Bottom"
                                StaysOpen="False">
                             <ListBox ItemsSource="{Binding Items, Mode=OneWay, RelativeSource={RelativeSource AncestorType=TabControl}}" 
-                                     Background="{Binding Path=(helpers:ThemeHelper.BackGround)}"
-                                     Foreground="{Binding Path=(helpers:ThemeHelper.ForeGround)}"
+                                     Background="{Binding Path=(helpers:ThemeHelper.Background)}"
+                                     Foreground="{Binding Path=(helpers:ThemeHelper.Foreground)}"
                                      MaxHeight="200"
                                      ScrollViewer.HorizontalScrollBarVisibility="Auto"
                                      ScrollViewer.VerticalScrollBarVisibility="Disabled"

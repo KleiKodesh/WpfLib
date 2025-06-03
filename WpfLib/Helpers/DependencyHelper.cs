@@ -1,6 +1,7 @@
 ﻿using System.Windows.Media;
 using System.Windows;
 using System.Linq;
+using System.Windows.Media.Media3D;
 
 namespace WpfLib.Helpers
 {
@@ -31,19 +32,22 @@ namespace WpfLib.Helpers
         {
             if (parent == null) return null;
 
-            for (int i = 0, count = VisualTreeHelper.GetChildrenCount(parent); i < count; i++)
+            // חיפוש בעץ הוויזואלי רק אם אפשר
+            if (parent is Visual || parent is Visual3D)
             {
-                var child = VisualTreeHelper.GetChild(parent, i);
-                if (child is T tChild) return tChild;
+                int count = VisualTreeHelper.GetChildrenCount(parent);
+                for (int i = 0; i < count; i++)
+                {
+                    var child = VisualTreeHelper.GetChild(parent, i);
+                    if (child is T tChild) return tChild;
 
-                var result = FindChild<T>(child);
-                if (result != null) return result;
+                    var result = FindChild<T>(child);
+                    if (result != null) return result;
+                }
             }
 
-            var logicalChildren = LogicalTreeHelper.GetChildren(parent).Cast<DependencyObject>().ToList();
-            for (int i = 0, count = logicalChildren.Count; i < count; i++)
+            foreach (var child in LogicalTreeHelper.GetChildren(parent).OfType<DependencyObject>())
             {
-                var child = logicalChildren[i];
                 if (child is T tChild) return tChild;
 
                 var result = FindChild<T>(child);
@@ -52,5 +56,6 @@ namespace WpfLib.Helpers
 
             return null;
         }
+
     }
 }

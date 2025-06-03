@@ -13,7 +13,7 @@
     <Style x:Key="TitleBarButtonBase" TargetType="Button">
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.ForeGround)}"/>
+        <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.Foreground)}"/>
         <Setter Property="Padding" Value="0" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
@@ -123,8 +123,8 @@
     </Style>
 
     <Style TargetType="Window" x:Key="ThemedWindowStyle">
-        <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.ForeGround)}"/>
-
+        <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.Foreground)}"/>
+        <Setter Property="Background" Value="{Binding Path=(helpers:ThemeHelper.Background)}"/>
         <Setter Property="WindowChrome.WindowChrome">
             <Setter.Value>
                 <WindowChrome
@@ -138,8 +138,9 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Window">
-                    <Border Background="{Binding Path=(helpers:ThemeHelper.BackGround)}"
-                        BorderBrush="{StaticResource WindowBorder.ColorBrush}" BorderThickness="0.5">
+                    <Border Background="{Binding Path=(helpers:ThemeHelper.Background)}"
+                        BorderBrush="{StaticResource WindowBorder.ColorBrush}" BorderThickness="0.5"
+                            Padding="0,0,0,3">
                         <Grid x:Name="RootGrid">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="30"/>
@@ -159,7 +160,7 @@
                                         Height="{Binding ActualHeight, ElementName=WindowTitleBox}"/>
                                     <TextBlock x:Name="WindowTitleBox" Text="{Binding Title, RelativeSource={RelativeSource TemplatedParent}}"
                                            VerticalAlignment="Center"
-                                           Foreground="{Binding Path=(helpers:ThemeHelper.ForeGround)}"/>
+                                           Foreground="{Binding Path=(helpers:ThemeHelper.Foreground)}"/>
                                 </StackPanel>
 
                                 <StackPanel x:Name="TitleBarButtonsPanel" Orientation="Horizontal" Grid.Column="2">
@@ -213,7 +214,8 @@
     </Style>
 
     <Style TargetType="Window" x:Key="ThemedToolWindowStyle">
-        <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.ForeGround)}"/>
+        <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.Foreground)}"/>
+        <Setter Property="Background" Value="{Binding Path=(helpers:ThemeHelper.Background)}"/>
         <Setter Property="WindowStyle" Value="None"/>
         <Setter Property="ResizeMode" Value="NoResize"/>
 
@@ -229,8 +231,9 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Window">
-                    <Border Background="{Binding Path=(helpers:ThemeHelper.BackGround)}"
-                        BorderBrush="{StaticResource WindowBorder.ColorBrush}" BorderThickness="0.5">
+                    <Border Background="{Binding Path=(helpers:ThemeHelper.Background)}"
+                        BorderBrush="{StaticResource WindowBorder.ColorBrush}" BorderThickness="0.5"
+                             Padding="0,0,0,3">
                         <Grid x:Name="RootGrid">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="30"/>
@@ -250,7 +253,7 @@
                                     Height="{Binding ActualHeight, ElementName=WindowTitleBox}"/>
                                     <TextBlock x:Name="WindowTitleBox" Text="{Binding Title, RelativeSource={RelativeSource TemplatedParent}}"
                                         VerticalAlignment="Center"
-                                        Foreground="{Binding Path=(helpers:ThemeHelper.BackGround)}"/>
+                                        Foreground="{Binding Path=(helpers:ThemeHelper.Background)}"/>
                                 </StackPanel>
 
                                 <StackPanel x:Name="TitleBarButtonsPanel" Orientation="Horizontal" Grid.Column="2">

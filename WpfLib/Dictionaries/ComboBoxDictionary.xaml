@@ -12,7 +12,7 @@
         </Setter>
     </Style>
 
-    <SolidColorBrush x:Key="ComboBox.Light.LightBackGround" Opacity="0.1" Color="#FFF5F5F5"/>
+    <SolidColorBrush x:Key="ComboBox.Light.LightBackground" Opacity="0.1" Color="#FFF5F5F5"/>
     <SolidColorBrush x:Key="TextBox.Static.Background" Color="#FFFFFFFF"/>
 
     <Style x:Key="ComboBoxEditableTextBox" TargetType="{x:Type TextBox}">
@@ -86,7 +86,7 @@
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                     <Border x:Name="templateRoot" Background="{Binding Background, RelativeSource={RelativeSource AncestorType=ComboBox}}" BorderBrush="{StaticResource ComboBox.Static.Border}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
                         <Border x:Name="splitBorder" BorderBrush="Transparent" BorderThickness="1" HorizontalAlignment="Right" Margin="0" SnapsToDevicePixels="true" Width="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}">
-                            <Path x:Name="arrow" Data="F1 M 0,0 L 2.667,2.66665 L 5.3334,0 L 5.3334,-1.78168 L 2.6667,0.88501 L0,-1.78168 L0,0 Z" Fill="{Binding Path=(helpers:ThemeHelper.ForeGround)}" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center"/>
+                            <Path x:Name="arrow" Data="F1 M 0,0 L 2.667,2.66665 L 5.3334,0 L 5.3334,-1.78168 L 2.6667,0.88501 L0,-1.78168 L0,0 Z" Fill="{Binding Path=(helpers:ThemeHelper.Foreground)}" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center"/>
                         </Border>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -169,7 +169,7 @@
            
             <Popup x:Name="PART_Popup" AllowsTransparency="False" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource Mode=TemplatedParent}}" Placement="Bottom" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
                 <theme:SystemDropShadowChrome x:Name="shadow" Color="Transparent" MinWidth="{Binding ActualWidth, ElementName=templateRoot}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                    <Border x:Name="dropDownBorder" Background="{Binding Path=(helpers:ThemeHelper.BackGround)}" BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" BorderThickness="1">
+                    <Border x:Name="dropDownBorder" Background="{Binding Path=(helpers:ThemeHelper.Background)}" BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" BorderThickness="1">
                         <ScrollViewer x:Name="DropDownScrollViewer">
                                 <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
                                     <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
@@ -185,7 +185,7 @@
             <ToggleButton x:Name="toggleButton" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Grid.ColumnSpan="2" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource Mode=TemplatedParent}}" Style="{StaticResource ComboBoxToggleButton}"/>
             <Border x:Name="border" Background="{TemplateBinding Background}" Margin="{TemplateBinding BorderThickness}">
                 <TextBox x:Name="PART_EditableTextBox" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" IsReadOnly="{Binding IsReadOnly, RelativeSource={RelativeSource Mode=TemplatedParent}}" Margin="{TemplateBinding Padding}" Style="{StaticResource ComboBoxEditableTextBox}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                         Foreground="{Binding Path=(helpers:ThemeHelper.ForeGround)}"/>
+                         Foreground="{Binding Path=(helpers:ThemeHelper.Foreground)}"/>
             </Border>
             
         </Grid>
@@ -267,14 +267,14 @@
             <Style TargetType="ComboBoxItem">
                 <Setter Property="BorderThickness" Value="0"/>
                 <Setter Property="Padding" Value="0"/>
-                <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.ForeGround)}"/>
+                <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.Foreground)}"/>
             </Style>
         </Style.Resources>
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Template" Value="{StaticResource ComboBoxTemplate}"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Background" Value="{StaticResource ComboBox.Light.LightBackGround}"/>
-        <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.ForeGround)}"/>
+        <Setter Property="Background" Value="{StaticResource ComboBox.Light.LightBackground}"/>
+        <Setter Property="Foreground" Value="{Binding Path=(helpers:ThemeHelper.Foreground)}"/>
         <Style.Triggers>
             <Trigger Property="IsEditable" Value="true">
                 <Setter Property="IsTabStop" Value="false"/>
