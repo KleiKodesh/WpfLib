@@ -21,7 +21,7 @@ namespace WpfLib.Helpers
 
         static string updateQuestion = "Updates_were_found_Would_you_like_to_download_them?";
 
-        static short _updateInterval = 1;
+        static int updateInterval = 0;
         static string _currentVersion = "v0";
 
         public static string CurrentVersion 
@@ -37,21 +37,12 @@ namespace WpfLib.Helpers
             }
         }
 
-        public static short UpdateInterval
+        public static async void Update(string repoOwner, string repoName, string currentVersion,
+            int interval, string updateMessage = "")
         {
-            get => _updateInterval;
-            set
-            {
-                if (value != _updateInterval)
-                {
-                    _updateInterval = value;
-                    OnStaticPropertyChanged(nameof(UpdateInterval));
-                }
-            }
-        }
+            if (interval >= 0)
+                updateInterval = interval;
 
-        public static async void Update(string repoOwner, string repoName, string currentVersion, string updateMessage = "")
-        {
             if (!string.IsNullOrEmpty(updateMessage))
                 updateQuestion = updateMessage;
 
@@ -85,7 +76,7 @@ namespace WpfLib.Helpers
             string nextUpdateString = Interaction.GetSetting(domainName, "Updates", "NextUpdateCheck", DateTime.Now.ToString("yyyy-MM-dd"));
             DateTime nextUpdateCheck = DateTime.Parse(nextUpdateString);
 
-            DateTime nextCheckDate = DateTime.Now.AddDays(UpdateInterval); // Save setting to check for updates again in set interval
+            DateTime nextCheckDate = DateTime.Now.AddDays(updateInterval); // Save setting to check for updates again in set interval
             Interaction.SaveSetting(domainName, "Updates", "NextUpdateCheck", nextCheckDate.ToString("yyyy-MM-dd"));
 
             return DateTime.Now >= nextUpdateCheck;
