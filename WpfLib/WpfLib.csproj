@@ -97,6 +97,7 @@
     <Compile Include="AttachedProperties\ButtonStripBehavior.cs" />
     <Compile Include="AttachedProperties\GridSetup.cs" />
     <Compile Include="AttachedProperties\TextBoxBehaviours.cs" />
+    <Compile Include="Controls\Class1.cs" />
     <Compile Include="Controls\HebrewInputBox.xaml.cs">
       <DependentUpon>HebrewInputBox.xaml</DependentUpon>
     </Compile>
