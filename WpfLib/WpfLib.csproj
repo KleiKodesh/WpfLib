@@ -122,6 +122,7 @@
     <Compile Include="Helpers\LocaleDictionary.cs" />
     <Compile Include="Helpers\MsgBox.cs" />
     <Compile Include="Helpers\ResourcesHelper.cs" />
+    <Compile Include="Helpers\ThemeManager.cs" />
     <Compile Include="Helpers\ThemeHelper.cs" />
     <Compile Include="Helpers\UpdateHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
