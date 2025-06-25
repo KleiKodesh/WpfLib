@@ -100,14 +100,5 @@ namespace WpfLib.Helpers
                 Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(LightForegroundColorString));
             }
         }
-
-        public static string ToRgbString(this SolidColorBrush brush)
-        {
-            Color color = brush.Color;
-            return $"rgb({color.R}, {color.G}, {color.B})";
-        }
-
-        public static string ToRgbString(this Color color) =>
-             $"rgb({color.R}, {color.G}, {color.B})";
     }
 }

@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using Microsoft.Web.WebView2.Wpf;
+using System.Windows.Controls;
+using WebViewLib;
 using WpfLib.Helpers;
 
 namespace WpfLib.Controls
@@ -18,7 +20,11 @@ namespace WpfLib.Controls
                 TabItem tabItem = DependencyHelper.FindParent<TabItem>(button);
 
                 if (tabItem != null && tabItem.Parent is TabControl tabControl)
+                {
                     tabControl.Items.Remove(tabItem);
+                    try { DependencyHelper.FindChild<WebViewHost>(tabItem)?.WebView.Dispose(); } catch { }
+                    try { DependencyHelper.FindChild<WebView2>(tabItem)?.Dispose(); } catch { }
+                }
             }
         }
     }
