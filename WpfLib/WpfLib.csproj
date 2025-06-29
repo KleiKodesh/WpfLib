@@ -110,7 +110,9 @@
     <Compile Include="AttachedProperties\ButtonStripBehavior.cs" />
     <Compile Include="AttachedProperties\GridSetup.cs" />
     <Compile Include="AttachedProperties\TextBoxBehaviours.cs" />
-    <Compile Include="Controls\Class1.cs" />
+    <Compile Include="Controls\UpDownFloatTextBox.cs" />
+    <Compile Include="Controls\UpDownSlider.cs" />
+    <Compile Include="Controls\UpDownTextBox.cs" />
     <Compile Include="Controls\HebrewInputBox.xaml.cs">
       <DependentUpon>HebrewInputBox.xaml</DependentUpon>
     </Compile>
@@ -150,6 +152,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Controls\HebrewInputBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dictionaries\UpDownSliderDictionary.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
